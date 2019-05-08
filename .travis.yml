@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode10.2
+
+script:
+  - xcodebuild -project Dupnium.xcodeproj -scheme Dupnium -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' clean build test

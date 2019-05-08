@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'UI' do |ss|
     ss.source_files = "Sources/UI/**/*.{h,swift}"
+    ss.dependency 'Dupnium/Core'
   end
 
   s.default_subspec = 'Core'

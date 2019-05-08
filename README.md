@@ -12,7 +12,7 @@ A small helper class for localization
 
 [![Platform](https://img.shields.io/cocoapods/p/Dupnium.svg?style=flat)](http://cocoadocs.org/docsets/Dupnium)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Dupnium.svg)](http://cocoadocs.org/docsets/Dupnium)
-[![Travis-ci](https://travis-ci.org/e-sites/Dupnium?branch=master&001)](https://travis-ci.org/e-sites/Dupnium)
+[![Travis-ci](https://travis-ci.com/e-sites/Dupnium.svg?branch=master)](https://travis-ci.com/e-sites/Dupnium)
 
 
 # Installation

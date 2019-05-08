@@ -1,6 +1,6 @@
 # Dupnium
 
-![Dupnium](Assets/logo.png)
+![Dupnium](Assets/Logo.png)
 
 Dupnium is part of the **[E-sites iOS Suite](https://github.com/e-sites/iOS-Suite)**.
 

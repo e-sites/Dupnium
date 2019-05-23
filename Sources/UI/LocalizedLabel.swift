@@ -11,6 +11,8 @@ import UIKit
 
 open class LocalizedLabel: UILabel {
 
+    public var dupnium = Dupnium.shared
+
     // MARK: - Initialization
     // --------------------------------------------------------
 
@@ -31,7 +33,7 @@ open class LocalizedLabel: UILabel {
     // --------------------------------------------------------
 
     private func _setLocalizedText(_ string: String?) {
-        if let string = string, let locString = Dupnium.shared.getString(string) {
+        if let string = string, let locString = dupnium.getString(string) {
             text = locString
         }
     }

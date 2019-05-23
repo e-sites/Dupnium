@@ -11,6 +11,8 @@ import UIKit
 
 open class LocalizedButton: UIButton {
 
+    public var dupnium = Dupnium.shared
+
     private var _title: String?
 
     // MARK: - Initialization
@@ -45,7 +47,7 @@ open class LocalizedButton: UIButton {
     }
 
     private func _setLocalizedTitle(_ title: String?, for state: UIControl.State) {
-        if let string = title, let locString = Dupnium.shared.getString(string) {
+        if let string = title, let locString = dupnium.getString(string) {
             setTitle(locString, for: .normal)
         }
     }

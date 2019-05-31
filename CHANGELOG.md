@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.0 (31-05-2019)
+- `setup(_:)` func
+
 ## v1.1.0 (23-05-2019)
 - Auto update localizable ui elements
 

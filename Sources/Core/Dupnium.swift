@@ -15,6 +15,7 @@ open class Dupnium {
     }
     
     public static let shared = Dupnium()
+
     open var debugModus = false
     
     open var fallbackLocale: Locale = Locale.current {

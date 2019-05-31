@@ -35,8 +35,12 @@ open class LocalizedLabel: UILabel {
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        _setLocalizedText(text)
+        setup(text)
         _setListener()
+    }
+
+    open func setup(_ text: String?) {
+        _setLocalizedText(text)
     }
 
     // MARK: - Set

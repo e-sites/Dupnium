@@ -40,8 +40,12 @@ open class LocalizedButton: UIButton {
 
         let title = super.title(for: .normal)
         _title = title
-        _setLocalizedTitle(title, for: state)
+        setup(title)
         _setListener()
+    }
+
+    open func setup(_ title: String?) {
+        _setLocalizedTitle(title, for: state)
     }
 
     private func _setListener() {

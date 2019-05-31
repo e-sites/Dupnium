@@ -11,7 +11,16 @@ import UIKit
 
 open class LocalizedLabel: UILabel {
 
-    public var dupnium = Dupnium.shared
+    private var _dupniumKey: String?
+
+    public var dupnium = Dupnium.shared {
+        didSet {
+            NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: oldValue)
+            _setListener()
+        }
+    }
+
+    @IBInspectable public var autoUpdate: Bool = true
 
     // MARK: - Initialization
     // --------------------------------------------------------
@@ -27,6 +36,7 @@ open class LocalizedLabel: UILabel {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         _setLocalizedText(text)
+        _setListener()
     }
 
     // MARK: - Set
@@ -34,7 +44,26 @@ open class LocalizedLabel: UILabel {
 
     private func _setLocalizedText(_ string: String?) {
         if let string = string, let locString = dupnium.getString(string) {
+            if string != locString {
+                _dupniumKey = string
+            }
             text = locString
         }
+    }
+
+    private func _setListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(_updateNotificationCenter(_:)), name: Dupnium.Constants.localeChangedNotificationName, object: dupnium)
+    }
+
+    @objc
+    private func _updateNotificationCenter(_ notification: Notification) {
+        guard let key = _dupniumKey, autoUpdate, let string = dupnium.getString(key) else {
+            return
+        }
+        text = string
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: dupnium)
     }
 }

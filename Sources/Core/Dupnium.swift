@@ -9,8 +9,9 @@
 import Foundation
 
 open class Dupnium {
-    private enum Constants {
+    enum Constants {
         fileprivate static let userDefaultsLocaleKey = "userDefaultsLocaleKey"
+        static let localeChangedNotificationName = Notification.Name("_dupniumLocaleChanged")
     }
     
     public static let shared = Dupnium()
@@ -27,6 +28,7 @@ open class Dupnium {
     open var locale: Locale = Locale.current {
         didSet {
             self._update()
+            NotificationCenter.default.post(name: Constants.localeChangedNotificationName, object: self, userInfo: [ "locale": locale ])
         }
     }
     

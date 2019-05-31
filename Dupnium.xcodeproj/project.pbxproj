@@ -15,6 +15,7 @@
 		C36E0AB72282DFA8007BBD00 /* Dupnium.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AB22282DFA8007BBD00 /* Dupnium.swift */; };
 		C36E0AB82282DFA8007BBD00 /* PluralForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AB32282DFA8007BBD00 /* PluralForm.swift */; };
 		C36E0AB92282DFA8007BBD00 /* Locale+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AB42282DFA8007BBD00 /* Locale+Localization.swift */; };
+		C3EB26EA22A14263007B8F0B /* Dupnium+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EB26E922A14263007B8F0B /* Dupnium+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		C36E0AB22282DFA8007BBD00 /* Dupnium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dupnium.swift; sourceTree = "<group>"; };
 		C36E0AB32282DFA8007BBD00 /* PluralForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluralForm.swift; sourceTree = "<group>"; };
 		C36E0AB42282DFA8007BBD00 /* Locale+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+Localization.swift"; sourceTree = "<group>"; };
+		C3EB26E922A14263007B8F0B /* Dupnium+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dupnium+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				C36E0AAF2282DFA8007BBD00 /* LocalizedLabel.swift */,
 				C36E0AB02282DFA8007BBD00 /* LocalizedButton.swift */,
+				C3EB26E922A14263007B8F0B /* Dupnium+extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			files = (
 				C36E0AB92282DFA8007BBD00 /* Locale+Localization.swift in Sources */,
 				C36E0AB52282DFA8007BBD00 /* LocalizedLabel.swift in Sources */,
+				C3EB26EA22A14263007B8F0B /* Dupnium+extension.swift in Sources */,
 				C36E0AB62282DFA8007BBD00 /* LocalizedButton.swift in Sources */,
 				C36E0AB72282DFA8007BBD00 /* Dupnium.swift in Sources */,
 				C36E0AB82282DFA8007BBD00 /* PluralForm.swift in Sources */,

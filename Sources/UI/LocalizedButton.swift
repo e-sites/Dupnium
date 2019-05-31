@@ -11,7 +11,16 @@ import UIKit
 
 open class LocalizedButton: UIButton {
 
-    public var dupnium = Dupnium.shared
+    private var _dupniumKey: String?
+
+    public var dupnium = Dupnium.shared {
+        didSet {
+            NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: oldValue)
+            _setListener()
+        }
+    }
+
+    @IBInspectable public var autoUpdate: Bool = true
 
     private var _title: String?
 
@@ -32,6 +41,11 @@ open class LocalizedButton: UIButton {
         let title = super.title(for: .normal)
         _title = title
         _setLocalizedTitle(title, for: state)
+        _setListener()
+    }
+
+    private func _setListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(_updateNotificationCenter(_:)), name: Dupnium.Constants.localeChangedNotificationName, object: dupnium)
     }
 
     // MARK: - Title
@@ -48,8 +62,22 @@ open class LocalizedButton: UIButton {
 
     private func _setLocalizedTitle(_ title: String?, for state: UIControl.State) {
         if let string = title, let locString = dupnium.getString(string) {
+            if string != locString {
+                _dupniumKey = string
+            }
             setTitle(locString, for: .normal)
         }
     }
 
+    @objc
+    private func _updateNotificationCenter(_ notification: Notification) {
+        guard let key = _dupniumKey, autoUpdate, let string = dupnium.getString(key) else {
+            return
+        }
+        setTitle(string, for: .normal)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: dupnium)
+    }
 }

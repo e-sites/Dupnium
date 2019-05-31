@@ -15,7 +15,6 @@ open class LocalizedButton: UIButton {
 
     public var dupnium = Dupnium.shared {
         didSet {
-            NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: oldValue)
             _setListener()
         }
     }
@@ -49,6 +48,7 @@ open class LocalizedButton: UIButton {
     }
 
     private func _setListener() {
+        NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(_updateNotificationCenter(_:)), name: Dupnium.Constants.localeChangedNotificationName, object: dupnium)
     }
 
@@ -82,6 +82,6 @@ open class LocalizedButton: UIButton {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: dupnium)
+        NotificationCenter.default.removeObserver(self, name: Dupnium.Constants.localeChangedNotificationName, object: nil)
     }
 }

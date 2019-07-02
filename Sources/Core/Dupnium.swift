@@ -87,7 +87,7 @@ open class Dupnium {
         let model = UIDevice.current.model
         if model == "iPad" || model == "iPad Simulator" {
             let ipadKey = key + "~ipad"
-            if let ipadStr = getString(ipadKey) {
+            if let ipadStr = getString(ipadKey), ipadStr != ipadKey {
                 return ipadStr
             }
         }
@@ -104,7 +104,11 @@ open class Dupnium {
 
     @objc
     open func getString(_ key: String) -> String? {
-        let notFoundString = "~~~~~>>>NOTFOUND<<<~~~~~"
+        // - If key is nil and value is nil, returns an empty string.
+        // - If key is nil and value is non-nil, returns value.
+        // - If key is not found and value is nil or an empty string, returns key.
+        // - If key is not found and value is non-nil and not empty, return value.
+        let notFoundString = "__NOTFOUND:\(key)"
         let returnValue = bundle.localizedString(forKey: key, value: notFoundString, table: nil)
         if returnValue == notFoundString {
             return nil

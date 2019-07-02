@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.4 (02-07-2019)
+- Re fixed `~ipad` bug
+
 ## v1.1.3 (02-07-2019)
 - Fixed `~ipad` bug
 

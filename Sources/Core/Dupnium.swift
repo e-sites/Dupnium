@@ -87,7 +87,7 @@ open class Dupnium {
         let model = UIDevice.current.model
         if model == "iPad" || model == "iPad Simulator" {
             let ipadKey = key + "~ipad"
-            if let ipadStr = getString(ipadKey) {
+            if let ipadStr = getString(ipadKey), ipadStr != ipadKey {
                 return ipadStr
             }
         }

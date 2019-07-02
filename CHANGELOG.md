@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.3 (02-07-2019)
+- Fixed `~ipad` bug
+
 ## v1.1.2 (31-05-2019)
 - Fixed double notifications when changing localization
 

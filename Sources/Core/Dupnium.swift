@@ -87,7 +87,7 @@ open class Dupnium {
         let model = UIDevice.current.model
         if model == "iPad" || model == "iPad Simulator" {
             let ipadKey = key + "~ipad"
-            if let ipadStr = getString(ipadKey), ipadStr != ipadKey {
+            if let ipadStr = getString(ipadKey) {
                 return ipadStr
             }
         }
@@ -104,7 +104,12 @@ open class Dupnium {
 
     @objc
     open func getString(_ key: String) -> String? {
-        return bundle.localizedString(forKey: key, value: nil, table: nil)
+        let notFoundString = "~~~~~>>>NOTFOUND<<<~~~~~"
+        let returnValue = bundle.localizedString(forKey: key, value: notFoundString, table: nil)
+        if returnValue == notFoundString {
+            return nil
+        }
+        return returnValue
     }
 
     open subscript(key: String, value: Int) -> String {

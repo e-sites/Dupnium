@@ -97,7 +97,7 @@ open class Dupnium {
             if debugModus {
                 NSLog("[Dubnium] Cannot find localization for '\(sk)' in '\(language).lproj/Localizable.strings'")
             }
-            return ""
+            return key
         }
         return str
     }

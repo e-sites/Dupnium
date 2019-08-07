@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.5 (07-08-2019)
+- Return key if translation is not found
+
 ## v1.1.4 (02-07-2019)
 - Re fixed `~ipad` bug
 

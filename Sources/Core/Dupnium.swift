@@ -49,7 +49,7 @@ open class Dupnium {
     open fileprivate(set) var bundle: Bundle = Bundle.main
     
     open var language: String {
-        return locale.identifier.components(separatedBy: "_").first ?? "en"
+        return locale.identifier.replacingOccurrences(of: "-", with: "_").components(separatedBy: "_").first ?? "en"
     }
     
     private func _getBundle(locale: Locale) -> Bundle? {

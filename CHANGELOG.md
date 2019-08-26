@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.6 (26-08-2019)
+- Fixed a bug when getting the language
+
 ## v1.1.5 (07-08-2019)
 - Return key if translation is not found
 

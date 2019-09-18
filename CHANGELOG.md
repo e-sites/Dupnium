@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.8 (18-09-2019)
+- Missing `UIKit` import
+
 ## v1.1.7 (18-09-2019)
 - Swift PM
 

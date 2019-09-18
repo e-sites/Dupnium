@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Dupnium"
-  s.version      = "1.1.6"
+  s.version      = "1.1.7"
   s.author       = { "Bas van Kuijck" => "bas@e-sites.nl" }
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.homepage     = "http://www.e-sites.nl"

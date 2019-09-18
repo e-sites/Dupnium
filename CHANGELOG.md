@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.7 (18-09-2019)
+- Swift PM
+
 ## v1.1.6 (26-08-2019)
 - Fixed a bug when getting the language
 

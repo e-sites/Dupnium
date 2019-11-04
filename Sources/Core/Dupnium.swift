@@ -24,6 +24,7 @@ open class Dupnium {
             if _getBundle(locale: fallbackLocale) == nil {
                 fatalError("[Localization] Cannot find '\(language).lproj/Localizable.strings' for `fallBackLocale`")
             }
+            self._update()
         }
     }
     

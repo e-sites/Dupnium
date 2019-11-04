@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.1.9 (04-11-2019)
+- Reload when setting fallback locale
+
 ## v1.1.8 (18-09-2019)
 - Missing `UIKit` import
 

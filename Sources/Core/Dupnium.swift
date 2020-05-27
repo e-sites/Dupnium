@@ -22,7 +22,7 @@ open class Dupnium {
     open var fallbackLocale: Locale = Locale.current {
         didSet {
             if _getBundle(locale: fallbackLocale) == nil {
-                fatalError("[Localization] Cannot find '\(language).lproj/Localizable.strings' for `fallBackLocale`")
+                fatalError("[Localization] Cannot find '\(language(for: fallbackLocale) ?? "").lproj/Localizable.strings' for `fallBackLocale`")
             }
             self._update()
         }
@@ -49,13 +49,17 @@ open class Dupnium {
     }
     
     open fileprivate(set) var bundle: Bundle = Bundle.main
-    
+
+    private func language(for locale: Locale) -> String? {
+        return locale.identifier.replacingOccurrences(of: "-", with: "_").components(separatedBy: "_").first
+    }
+
     open var language: String {
-        return locale.identifier.replacingOccurrences(of: "-", with: "_").components(separatedBy: "_").first ?? "en"
+        return language(for: locale) ?? "en"
     }
     
     private func _getBundle(locale: Locale) -> Bundle? {
-        guard let language = locale.identifier.components(separatedBy: "_").first else {
+        guard let language = language(for: locale) else {
             return nil
         }
         guard let path = Bundle.main.path(forResource: language, ofType: "lproj") else {

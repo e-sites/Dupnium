@@ -1,5 +1,11 @@
 # Changelog Dupnium
 
+## v1.2.1 (27-05-2020)
+- Show wrong language in error in fallback locale set
+
+## v1.2.0 (11-05-2020)
+- Always use system locale if possible
+
 ## v1.1.9 (04-11-2019)
 - Reload when setting fallback locale
 

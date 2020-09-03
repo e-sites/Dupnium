@@ -41,11 +41,11 @@ open class LocalizedButton: UIButton {
         _titlesMap[UIControl.State.disabled.rawValue] = super.title(for: .disabled)
         _titlesMap[UIControl.State.highlighted.rawValue] = super.title(for: .highlighted)
         _titlesMap[UIControl.State.selected.rawValue] = super.title(for: .selected)
-        setup()
+        _setup()
         _setListener()
     }
 
-    open func setup() {
+    private func _setup() {
         _setLocalizedTitle(title(for: state), for: state)
     }
 

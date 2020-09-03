@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.3.1 (03-09-2020)
+- Make setup private
+
 ## v1.3.0 (03-09-2020)
 - Select a custom Bundle
 

@@ -21,7 +21,7 @@ open class LocalizedButton: UIButton {
 
     @IBInspectable public var autoUpdate: Bool = true
 
-    private var _title: String?
+    private var _titlesMap: [UIControl.State.RawValue: String?] = [:]
 
     // MARK: - Initialization
     // --------------------------------------------------------
@@ -37,14 +37,16 @@ open class LocalizedButton: UIButton {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        let title = super.title(for: .normal)
-        _title = title
-        setup(title)
+        _titlesMap[UIControl.State.normal.rawValue] = super.title(for: .normal)
+        _titlesMap[UIControl.State.disabled.rawValue] = super.title(for: .disabled)
+        _titlesMap[UIControl.State.highlighted.rawValue] = super.title(for: .highlighted)
+        _titlesMap[UIControl.State.selected.rawValue] = super.title(for: .selected)
+        setup()
         _setListener()
     }
 
-    open func setup(_ title: String?) {
-        _setLocalizedTitle(title, for: state)
+    open func setup() {
+        _setLocalizedTitle(title(for: state), for: state)
     }
 
     private func _setListener() {
@@ -56,12 +58,12 @@ open class LocalizedButton: UIButton {
     // --------------------------------------------------------
 
     override open func setTitle(_ title: String?, for state: UIControl.State) {
-        _title = title
-        super.setTitle(title, for: .normal)
+        _titlesMap[state.rawValue] = title
+        super.setTitle(title, for: state)
     }
 
     override open func title(for state: UIControl.State) -> String? {
-        return _title
+        return _titlesMap[state.rawValue] ?? nil
     }
 
     private func _setLocalizedTitle(_ title: String?, for state: UIControl.State) {
@@ -69,7 +71,7 @@ open class LocalizedButton: UIButton {
             if string != locString {
                 _dupniumKey = string
             }
-            setTitle(locString, for: .normal)
+            setTitle(locString, for: state)
         }
     }
 

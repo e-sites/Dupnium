@@ -48,7 +48,12 @@ open class Dupnium {
         }
     }
     
-    open fileprivate(set) var bundle: Bundle = Bundle.main
+    fileprivate var localeBundle: Bundle = Bundle.main
+    open var bundle: Bundle = Bundle.main {
+        didSet {
+            _update()
+        }
+    }
 
     private func language(for locale: Locale) -> String? {
         return locale.identifier.replacingOccurrences(of: "-", with: "_").components(separatedBy: "_").first
@@ -62,7 +67,7 @@ open class Dupnium {
         guard let language = language(for: locale) else {
             return nil
         }
-        guard let path = Bundle.main.path(forResource: language, ofType: "lproj") else {
+        guard let path = bundle.path(forResource: language, ofType: "lproj") else {
             return nil
         }
         
@@ -80,7 +85,7 @@ open class Dupnium {
             }
             return
         }
-        self.bundle = bundle
+        self.localeBundle = bundle
         
         UserDefaults.standard.set(locale.identifier, forKey: Constants.userDefaultsLocaleKey)
     }
@@ -115,7 +120,7 @@ open class Dupnium {
         // - If key is not found and value is nil or an empty string, returns key.
         // - If key is not found and value is non-nil and not empty, return value.
         let notFoundString = "__NOTFOUND:\(key)"
-        let returnValue = bundle.localizedString(forKey: key, value: notFoundString, table: nil)
+        let returnValue = localeBundle.localizedString(forKey: key, value: notFoundString, table: nil)
         if returnValue == notFoundString {
             return nil
         }
@@ -146,14 +151,14 @@ open class Dupnium {
 
     
     open func data(fromResourceName name: String, withExtension ext: String) -> Data? {
-        guard let path = self.bundle.path(forResource: name, ofType: ext) else {
+        guard let path = localeBundle.path(forResource: name, ofType: ext) else {
             return nil
         }
         return try? Data(contentsOf: URL(fileURLWithPath: path))
     }
     
     open func image(named name: String, withExtension ext: String = "png") -> UIImage? {
-        guard let path = self.bundle.path(forResource: name, ofType: ext) else {
+        guard let path = localeBundle.path(forResource: name, ofType: ext) else {
             return nil
         }
         return UIImage(contentsOfFile: path)

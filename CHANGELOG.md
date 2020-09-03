@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.3.0 (03-09-2020)
+- Select a custom Bundle
+
 ## v1.2.1 (27-05-2020)
 - Show wrong language in error in fallback locale set
 

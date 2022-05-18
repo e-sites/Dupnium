@@ -1,5 +1,8 @@
 # Changelog Dupnium
 
+## v1.4.0 (18-05-2022)
+- Get string for locale
+
 ## v1.3.1 (03-09-2020)
 - Make setup private
 

@@ -114,13 +114,17 @@ open class Dupnium {
     }
 
     @objc
-    open func getString(_ key: String) -> String? {
+    open func getString(_ key: String, locale: Locale? = nil) -> String? {
         // - If key is nil and value is nil, returns an empty string.
         // - If key is nil and value is non-nil, returns value.
         // - If key is not found and value is nil or an empty string, returns key.
         // - If key is not found and value is non-nil and not empty, return value.
+        var bundle = localeBundle
+        if let locale = locale, let aBundle = _getBundle(locale: locale) ?? _getBundle(locale: fallbackLocale) {
+            bundle = aBundle
+        }
         let notFoundString = "__NOTFOUND:\(key)"
-        let returnValue = localeBundle.localizedString(forKey: key, value: notFoundString, table: nil)
+        let returnValue = bundle.localizedString(forKey: key, value: notFoundString, table: nil)
         if returnValue == notFoundString {
             return nil
         }
